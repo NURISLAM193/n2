@@ -259,3 +259,10 @@ document.querySelectorAll('[data-purpose="faq-section"] .rounded-xl').forEach(it
     }
   });
 });
+
+document.querySelectorAll(".product-card").forEach((card) => {
+  card.style.cursor = "pointer";
+  card.addEventListener("click", () => {
+    window.location.href = "https://nurislam193.github.io/n3/";
+  });
+});

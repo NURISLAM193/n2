@@ -4,7 +4,24 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Klothink Fashion Store</title>
-  <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:      '#FACC15',
+            secondary:    '#030712',
+            headingColor: '#111827',
+            textColor:    '#4B5563',
+            lightBg:      '#F9FAFB',
+            borderColor:  '#F3F4F6',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="./output.css">
   <script src="./ui.js" defer></script>
   <style>
@@ -19,19 +36,19 @@
 
   <nav class="bg-white border-b border-gray-100 py-4 px-4 sm:px-8 md:px-16 flex justify-between items-center">
     <div class="hidden md:flex gap-2">
-      <a href="#" class="px-6 py-2.5 rounded-full border border-gray-100 text-gray-600 hover:bg-gray-50 font-medium">Home</a>
-      <a href="#" class="px-6 py-2.5 rounded-full bg-gray-50 text-gray-900 font-medium">Products</a>
+      <a href="https://nurislam193.github.io/n1/" class="px-6 py-2.5 rounded-full border border-gray-100 text-gray-600 hover:bg-gray-50 font-medium">Home</a>
+      <a href="https://nurislam193.github.io/n2/" class="px-6 py-2.5 rounded-full bg-gray-50 text-gray-900 font-medium">Products</a>
     </div>
 
-    <a class="flex items-center" href="#">
+    <a class="flex items-center" href="https://nurislam193.github.io/n1/">
       <img src="./images/Group.png" class="h-12" alt="Klothink Logo"/>
     </a>
 
     <div class="flex items-center gap-4">
-      <button class="w-12 h-12 rounded-full bg-yellow-400 flex justify-center items-center hover:bg-yellow-500 transition-colors">
+      <button class="w-12 h-12 rounded-full bg-yellow-400 flex justify-center items-center hover:bg-yellow-500 transition-colors" type="button" onclick="window.location.href='https://nurislam193.github.io/n3/'">
         <i class="fa-solid fa-cart-shopping text-xl"></i>
       </button>
-      <a href="#" class="hidden sm:block px-6 py-2.5 rounded-full border border-gray-100 text-gray-900 font-medium hover:bg-gray-50">Contact Support</a>
+      <a href="https://nurislam193.github.io/n4/" class="hidden sm:block px-6 py-2.5 rounded-full border border-gray-100 text-gray-900 font-medium hover:bg-gray-50">Contact Support</a>
     </div>
   </nav>
 
@@ -211,7 +228,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
 
 <div class="lg:col-span-2 space-y-8">
-<a class="flex items-center gap-2" href="#">
+<a class="flex items-center gap-2" href="https://nurislam193.github.io/n1/">
 <img alt="Klothink Logo" class="h-12 w-auto" src="./images/Group.png"/>
 </a>
 <form class="flex gap-2 max-w-sm w-full" data-purpose="newsletter-form">
