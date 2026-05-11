@@ -115,14 +115,14 @@ function rotateProducts(direction) {
 
   if (direction === "next") {
     refs.productGrid.appendChild(cards[0]);
-    state.productStep = (state.productStep + 1) % 3;
+    state.productStep = (state.productStep + 1) % cards.length;
   } else {
     refs.productGrid.prepend(cards[cards.length - 1]);
-    state.productStep = (state.productStep - 1 + 3) % 3;
+    state.productStep = (state.productStep - 1 + cards.length) % cards.length;
   }
 
   if (refs.pageProgress) {
-    refs.pageProgress.style.width = `${(state.productStep + 1) * 33.333}%`;
+    refs.pageProgress.style.width = `${((state.productStep + 1) / cards.length) * 100}%`;
   }
 }
 
@@ -131,6 +131,42 @@ function setupPagination() {
 
   refs.pagePrev.addEventListener("click", () => rotateProducts("prev"));
   refs.pageNext.addEventListener("click", () => rotateProducts("next"));
+}
+
+function setupCollectionCarousels() {
+  document.querySelectorAll("section.w-full.pb-20 > div.max-w-7xl").forEach((section) => {
+    const grid = section.querySelector(".grid");
+    const cards = grid ? [...grid.querySelectorAll(".product-card")] : [];
+    const buttons = [...section.querySelectorAll("button")].filter((button) => {
+      const label = button.textContent.trim();
+      return label === "<" || label === ">";
+    });
+    const progress = section.querySelector(".progress-track");
+    if (!grid || cards.length <= 1 || buttons.length < 2) return;
+
+    let step = 0;
+    const updateProgress = () => {
+      if (!progress) return;
+      step = (step + cards.length) % cards.length;
+      progress.style.width = `${((step + 1) / cards.length) * 100}%`;
+    };
+
+    const rotate = (direction) => {
+      const currentCards = [...grid.children];
+      if (direction === "next") {
+        grid.appendChild(currentCards[0]);
+        step += 1;
+      } else {
+        grid.prepend(currentCards[currentCards.length - 1]);
+        step -= 1;
+      }
+      updateProgress();
+    };
+
+    buttons[0].addEventListener("click", () => rotate("prev"));
+    buttons[1].addEventListener("click", () => rotate("next"));
+    updateProgress();
+  });
 }
 
 function setupHeroSelectors() {
@@ -161,6 +197,7 @@ function init() {
   setupHero();
   setupTabs();
   setupPagination();
+  setupCollectionCarousels();
   setupHeroSelectors();
   setupResponsiveReset();
   renderHero();
